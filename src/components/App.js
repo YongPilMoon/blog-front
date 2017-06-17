@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from './Navigation';
 
 class App extends React.Component {
     render() {
@@ -7,18 +8,6 @@ class App extends React.Component {
                 <Navigation />
             </div>
         )
-    }
-}
-
-class Navigation extends React.Component {
-    render() {
-        return (
-            <nav className="navbar navbar-default">
-                <div className="navbar-header">
-                    <a className="navbar-brand" href="#">YP's Blog</a>
-                </div>
-            </nav>
-        );
     }
 }
 
