@@ -1,41 +1,23 @@
-import React from 'react';
-import axios from 'axios';
-
-import Navigation from './Navigation';
-import PostListItem from './PostListItem';
-import PostDetail from './PostDetail';
+import React from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import Navigation from "./Navigation";
+import PostList from "./PostList";
+import PostDetail from "./PostDetail";
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            posts: [],
-            selectedPost: null
-        };
-
-        this.getPostListData();
-    }
-
-    getPostListData(){
-        const req = axios.get('http://localhost:3000/post/list');
-        req.then(req => {
-            this.setState({
-                posts: req.data
-            })
-        });
-    }
-
     render() {
         return (
-            <div>
-                <Navigation />
-                {this.state.posts.map(p => {
-                    return (<PostListItem onPostSelect={selectedPost => this.setState({selectedPost})} title={p.title} id={p.id} key={p.id}/>);
-                })}
-                <PostDetail post={this.state.selectedPost}/>
-
-            </div>
+            <Router>
+                <div>
+                    <Route path="/" component={Navigation}/>
+                    <div className="container">
+                        <div className="col-md-offset-2 col-md-8">
+                            <Route exact path="/" component={PostList}/>
+                            <Route path="/post/:id" component={PostDetail}/>
+                        </div>
+                    </div>
+                </div>
+            </Router>
         )
     }
 }

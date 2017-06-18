@@ -4,8 +4,9 @@ class Navigation extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-default">
-                <div className="navbar-header">
-                    <a className="navbar-brand" href="#">YP's Blog</a>
+                <a className="navbar-brand" href="#">YP's Blog</a>
+                <div className="right-header">
+                    <a href="#">글 쓰기</a>
                 </div>
             </nav>
         );
