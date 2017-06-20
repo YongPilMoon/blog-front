@@ -13,6 +13,9 @@ const config = {
                 test: /\.js/
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true
     }
 };
 

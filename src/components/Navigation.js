@@ -1,12 +1,12 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 class Navigation extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-default">
-                <a className="navbar-brand" href="#">YP's Blog</a>
+                <Link to="/" className="navbar-brand">YP's Blog</Link>
                 <div className="right-header">
-                    <a href="#">글 쓰기</a>
+                    <Link to="/create/post">글 쓰기</Link>
                 </div>
             </nav>
         );

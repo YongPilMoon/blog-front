@@ -14,3 +14,15 @@ a:hover { color: black; text-decoration: none;}
 h1.list-item{
     margin: 20px 20px;
 }
+
+.custom-form-margin{
+    margin: 30px 0;
+}
+
+.custom-textarea{
+    min-height: 200px;
+}
+
+.custom-btn-default{
+    float: right;
+}
