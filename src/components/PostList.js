@@ -28,11 +28,12 @@ class PostList extends Component{
             <ul>
                 {this.state.posts.reverse().map(p => {
                     return (
-                        <div key={p.id} className="post-wrapper">
+                        <div key={p.id} className="post-list-wrapper">
                             <Link to={`/post/${p.id}`}>
-                                <h1 className="post-title">{p.title}</h1>
+                                <div className="post-list-title">{p.title}</div>
                             </Link>
-                            <div className="post-date">{changeDateFormat(p.createdAt)}</div>
+                            <div className="post-list-introduction">{p.introduction}</div>
+                            <div className="post-list-date">{changeDateFormat(p.createdAt)}</div>
                         </div>
                     );
                 })}

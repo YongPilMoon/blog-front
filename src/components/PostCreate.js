@@ -8,6 +8,7 @@ class PostCreate extends Component{
         this.state = {
             title: "",
             content: "",
+            introduction: "",
             redirectToMainPage: false
         }
     }
@@ -27,6 +28,12 @@ class PostCreate extends Component{
                                className="form-control custom-form-margin"
                                value={this.state.title}
                                onChange={this.handleChange.bind(this)}/>
+                        <input type="introduction"
+                               name="introduction"
+                               placeholder="introduction"
+                               className="form-control custom-form-margin"
+                               value={this.state.introduction}
+                               onChange={this.handleChange.bind(this)}/>
                         <textarea className="form-control custom-form-margin custom-textarea" name="content"
                                   placeholder="content"
                                   value={this.state.content}
@@ -45,17 +52,20 @@ class PostCreate extends Component{
     handleClick(){
         let title = this.state.title;
         let content = this.state.content;
-        this.insertPost(title, content);
+        let introduction = this.state.introduction;
+        this.insertPost(title, content, introduction);
         this.setState({
             title:"",
-            content:""
+            content:"",
+            introduction:""
         });
     }
 
-    insertPost(title, content) {
+    insertPost(title, content, introduction) {
         axios.post("http://localhost:3000/post/",{
             title: title,
-            content: content
+            content: content,
+            introduction: introduction
         }).then(response => this.setState({ redirectToNewPage: true }));
 
     }
