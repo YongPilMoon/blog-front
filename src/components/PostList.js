@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import changeDateFormat from '../helper'
 
 class PostList extends Component{
     constructor(props){
@@ -25,11 +26,14 @@ class PostList extends Component{
     render() {
         return(
             <ul>
-                {this.state.posts.map(p => {
+                {this.state.posts.reverse().map(p => {
                     return (
-                        <Link key={p.id} to={`/post/${p.id}`}>
-                            <h1 className="list-item">{p.title}</h1>
-                        </Link>
+                        <div key={p.id} className="post-wrapper">
+                            <Link to={`/post/${p.id}`}>
+                                <h1 className="post-title">{p.title}</h1>
+                            </Link>
+                            <div className="post-date">{changeDateFormat(p.createdAt)}</div>
+                        </div>
                     );
                 })}
             </ul>
