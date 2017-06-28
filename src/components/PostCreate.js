@@ -16,7 +16,7 @@ class PostCreate extends Component{
     render(){
         if (this.state.redirectToNewPage) {
             return (
-                <Redirect to="/"/>
+                <Redirect to="/"/> 
             )
         }
 
@@ -62,7 +62,7 @@ class PostCreate extends Component{
     }
 
     insertPost(title, content, introduction) {
-        axios.post("http://localhost:3000/post/",{
+        axios.post("http://52.79.209.163:3000/post/",{
             title: title,
             content: content,
             introduction: introduction

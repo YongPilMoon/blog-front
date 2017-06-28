@@ -15,7 +15,7 @@ class PostList extends Component{
     }
 
     getPostListData(){
-        const req = axios.get('http://localhost:3000/post/list');
+        const req = axios.get('http://52.79.209.163:3000/post/list');
         req.then(req => {
             this.setState({
                 posts: req.data

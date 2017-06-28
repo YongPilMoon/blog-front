@@ -13,7 +13,7 @@ class PostDetail extends React.Component {
     }
     getPostDetail(){
         const id = this.props.match.params.id;
-        const req = axios.get(`http://localhost:3000/post/${id}`);
+        const req = axios.get(`http://52.79.209.163:3000/post/${id}`);
         req.then(req => {
             this.setState({
                 post: req.data
@@ -30,6 +30,9 @@ class PostDetail extends React.Component {
             <div className="col-md-9">
                 <h1> {this.state.post.title}</h1>
                 <div>{this.state.post.content}</div>
+                <div>
+                    <button className="btn btn-warning btn-sm custom-btn-default">delete</button>
+                </div>
             </div>
         )
     }
