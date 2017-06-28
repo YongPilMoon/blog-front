@@ -14,8 +14,8 @@ class App extends React.Component {
                         <div className="container">
                             <div className="col-md-offset-2 col-md-8">
                                 <Route exact path="/" component={PostList}/>
-                                <Route path="/post/:id" component={PostDetail}/>
                             </div>
+                            <Route path="/post/:id" component={PostDetail}/>
                             <Route exact path="/create/post" component={PostCreate}/>
                         </div>
                 </div>

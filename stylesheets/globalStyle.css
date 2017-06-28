@@ -43,3 +43,7 @@ div.post-list-title{
     padding: 30px 0;
     border-bottom: #e1e4e6 solid 1px;
 }
+
+.custom-right-margin{
+    margin-right: 5px;
+}

@@ -67,7 +67,6 @@ class PostCreate extends Component{
             content: content,
             introduction: introduction
         }).then(response => this.setState({ redirectToNewPage: true }));
-
     }
 
 }
