@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import axios from 'axios';
 
-class PostCreate extends Component{
+class PostEdit extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -38,7 +38,7 @@ class PostCreate extends Component{
                                   placeholder="content"
                                   value={this.state.content}
                                   onChange={this.handleChange.bind(this)}/>
-                    <button className="btn btn-default btn-sm custom-btn-default" onClick={this.handleClick.bind(this)}>글 쓰기</button>
+                    <button className="btn btn-default btn-sm custom-btn-default" onClick={this.handleClick.bind(this)}>글 수정</button>
                 </div>
         )
     }
@@ -53,7 +53,7 @@ class PostCreate extends Component{
         let title = this.state.title;
         let content = this.state.content;
         let introduction = this.state.introduction;
-        this.insertPost(title, content, introduction);
+        this.editPost(title, content, introduction);
         this.setState({
             title:"",
             content:"",
@@ -61,8 +61,9 @@ class PostCreate extends Component{
         });
     }
 
-    insertPost(title, content, introduction) {
-        axios.post("http://52.79.209.163:3000/post/",{
+    editPost(title, content, introduction) {
+        const id = this.props.id;
+        axios.post(`http://52.79.209.163:3000/post/${id}`,{
             title: title,
             content: content,
             introduction: introduction
@@ -71,4 +72,4 @@ class PostCreate extends Component{
 
 }
 
-export default PostCreate
+export default PostEdit
