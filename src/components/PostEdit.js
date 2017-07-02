@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import axios from 'axios';
+import config from '../../config/config';
 
 class PostEdit extends Component{
     constructor(props){
@@ -63,7 +64,7 @@ class PostEdit extends Component{
 
     editPost(title, content, introduction) {
         const id = this.props.id;
-        axios.post(`http://52.79.209.163:3000/post/${id}`,{
+        axios.post(`${config.API_URL}/post/${id}`,{
             title: title,
             content: content,
             introduction: introduction

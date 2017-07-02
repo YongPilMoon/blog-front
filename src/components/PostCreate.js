@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import axios from 'axios';
+import config from '../../config/config';
 
 class PostCreate extends Component{
     constructor(props){
@@ -62,7 +63,7 @@ class PostCreate extends Component{
     }
 
     insertPost(title, content, introduction) {
-        axios.post("http://52.79.209.163:3000/post/",{
+        axios.post(`${config.API_URL}/post/`,{
             title: title,
             content: content,
             introduction: introduction

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import changeDateFormat from '../helper'
+import config from '../../config/config';
 
 class PostList extends Component{
     constructor(props){
@@ -15,7 +16,7 @@ class PostList extends Component{
     }
 
     getPostListData(){
-        const req = axios.get('http://52.79.209.163:3000/post/list');
+        const req = axios.get(`${config.API_URL}/post/list`);
         req.then(req => {
             this.setState({
                 posts: req.data

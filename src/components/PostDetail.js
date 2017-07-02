@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router';
 import PostEdit from "./PostEdit";
-
+import config from '../../config/config';
 
 class PostDetail extends React.Component {
     constructor(props){
@@ -22,7 +22,7 @@ class PostDetail extends React.Component {
 
     getPostDetail(){
         const id = this.props.match.params.id;
-        axios.get(`http://52.79.209.163:3000/post/${id}`)
+        axios.get(`${config.API_URL}/post/${id}`)
             .then(req => {
                 console.log(req);
                 this.setState({
@@ -33,7 +33,7 @@ class PostDetail extends React.Component {
 
     deletePost(){
         const id = this.props.match.params.id;
-        axios.delete(`http://52.79.209.163:3000/post/${id}`)
+        axios.delete(`${config.API_URL}/post/${id}`)
             .then(res => this.setState({ redirectToNewPage: true }));
     }
 
