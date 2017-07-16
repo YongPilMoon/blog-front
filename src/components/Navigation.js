@@ -8,6 +8,9 @@ class Navigation extends React.Component {
                 <div className="right-header">
                     <Link to="/create/post">글 쓰기</Link>
                 </div>
+                <div className="right-header">
+                    <Link to="/login">로그인</Link>
+                </div>
             </nav>
         );
     }
