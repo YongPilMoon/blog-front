@@ -47,3 +47,10 @@ div.post-list-title{
 .custom-right-margin{
     margin-right: 5px;
 }
+
+/* Authentication */
+.auth{
+    margin-top: 50px;
+    text-align: center;
+}
+
