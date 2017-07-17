@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Redirect} from 'react-router';
 
 class Authentication extends React.Component {
 
@@ -7,7 +8,8 @@ class Authentication extends React.Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            redirectToMainPage: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
@@ -28,12 +30,20 @@ class Authentication extends React.Component {
                     this.setState({
                         password:""
                     });
+                }else{
+                    this.setState({ redirectToNewPage: true })
                 }
             }
         )
     }
 
     render() {
+        if (this.state.redirectToNewPage) {
+            return (
+                <Redirect to="/"/>
+            )
+        }
+
         const inputBoxes = (
             <div>
                 <div className="input-field col s12 username">
