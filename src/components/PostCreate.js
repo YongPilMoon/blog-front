@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import axios from 'axios';
 import config from '../../config/config';
+import {readCookie} from '../helper'
 
 class PostCreate extends Component{
     constructor(props){
@@ -63,11 +64,15 @@ class PostCreate extends Component{
     }
 
     insertPost(title, content, introduction) {
-        axios.post(`${config.API_URL}/post/`,{
-            title: title,
-            content: content,
-            introduction: introduction
-        }).then(response => this.setState({ redirectToNewPage: true }));
+        const token = readCookie('token');
+        if (token) {
+            axios.post(`${config.API_URL}/post/`,{
+                title: title,
+                content: content,
+                introduction: introduction
+            },{headers: { "x-access-token": token }})
+                .then(response => this.setState({ redirectToNewPage: true }));
+        }
     }
 
 }
