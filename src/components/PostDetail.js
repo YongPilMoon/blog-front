@@ -38,6 +38,7 @@ class PostDetail extends React.Component {
     }
 
     render() {
+        const isLoggedIn = this.props.isLoggedIn;
         if (this.state.redirectToNewPage) {
             return (
                 <Redirect to="/"/>
@@ -63,10 +64,12 @@ class PostDetail extends React.Component {
             <div>
                 <h1>{this.state.post.title}</h1>
                 <div>{this.state.post.content}</div>
-                <div>
-                    <button className="btn btn-warning btn-xs custom-btn-default" onClick={this.toggleEdit}>글 수정</button>
-                    <button className="btn btn-danger btn-xs custom-btn-default custom-right-margin" onClick={this.deletePost.bind(this)}>글 삭제</button>
-                </div>
+                {isLoggedIn &&
+                    <div>
+                        <button className="btn btn-warning btn-xs custom-btn-default" onClick={this.toggleEdit}>글 수정</button>
+                        <button className="btn btn-danger btn-xs custom-btn-default custom-right-margin" onClick={this.deletePost.bind(this)}>글 삭제</button>
+                    </div>
+                }
             </div>
         )
     }

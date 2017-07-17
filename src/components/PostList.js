@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import changeDateFormat from '../helper'
+import {changeDateFormat} from '../helper'
 import config from '../../config/config';
 
 class PostList extends Component{
