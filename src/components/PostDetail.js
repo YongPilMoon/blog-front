@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Redirect} from 'react-router';
 import PostEdit from "./PostEdit";
 import config from '../../config/config';
+import marked from 'marked';
 
 class PostDetail extends React.Component {
     constructor(props){
@@ -24,7 +25,6 @@ class PostDetail extends React.Component {
         const id = this.props.match.params.id;
         axios.get(`${config.API_URL}/post/${id}`)
             .then(req => {
-                console.log(req);
                 this.setState({
                     post: req.data
                 })
@@ -35,6 +35,25 @@ class PostDetail extends React.Component {
         const id = this.props.match.params.id;
         axios.delete(`${config.API_URL}/post/${id}`)
             .then(res => this.setState({ redirectToNewPage: true }));
+    }
+
+    rawMarkUp() {
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: true,
+            smartLists: true,
+            smartypants: false
+        });
+
+        var rawMarkup = marked(this.state.post.content, {sanitize: true});
+
+        return {
+            __html: rawMarkup
+        }
     }
 
     render() {
@@ -52,18 +71,15 @@ class PostDetail extends React.Component {
         if(this.state.isEditing) {
             return (
                 <div>
-                    <PostEdit title={this.state.post.title}
-                              introduction={this.state.post.introduction}
-                              content={this.state.post.content}
-                              id={this.state.post.id}/>
+                    <PostEdit post={this.state.post}/>
                 </div>
             )
         }
 
         return (
             <div>
-                <h1>{this.state.post.title}</h1>
-                <div>{this.state.post.content}</div>
+                <h3>{this.state.post.title}</h3>
+                <div dangerouslySetInnerHTML={this.rawMarkUp()}></div>
                 {isLoggedIn &&
                     <div>
                         <button className="btn btn-warning btn-xs custom-btn-default" onClick={this.toggleEdit}>글 수정</button>
